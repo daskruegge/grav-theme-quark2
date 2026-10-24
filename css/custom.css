@@ -13,3 +13,13 @@
 .content-text-light a {
     color: #a8a8a8 !important;
 }
+
+.navbar-brand img,
+.navbar-brand svg {
+  height: 44px;
+}
+
+.footer-brand .navbar-brand img,
+.footer-brand .navbar-brand svg {
+  height: 150px;
+}
