@@ -37,22 +37,46 @@
     {% endif %}
 {% endblock %}
 
+{% block modular_navigation %}
+    <ul class="navigation">
+    {% for module in page.collection() if module.template != 'modular/notice' and module.header.visible is not same as(false) %}
+        {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
+        <li><a class="{{ current_module }}" href="#{{ module.menu|hyphenize }}">{{ module.menu }}</a></li>
+    {% endfor %}
+    {% for mitem in site.menu %}
+        <li>
+            <a {% if mitem.class %}class="{{ mitem.class }}"{% endif %} href="{{ mitem.url }}">
+                {% if mitem.icon %}<i class="{{ mitem.icon|fa_icon }}" aria-hidden="true"></i>{% endif %}
+                {{ mitem.text }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+
 {% block header_navigation %}
     {% if show_onpage_menu %}
-        <ul class="navigation">
-        {% for module in page.collection() if module.header.visible is not same as(false) %}
-            {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
-            <li><a class="{{ current_module }}" href="#{{ module.menu|hyphenize }}">{{ module.menu }}</a></li>
-        {% endfor %}
-        {% for mitem in site.menu %}
-            <li>
-                <a {% if mitem.class %}class="{{ mitem.class }}"{% endif %} href="{{ mitem.url }}">
-                    {% if mitem.icon %}<i class="{{ mitem.icon|fa_icon }}" aria-hidden="true"></i>{% endif %}
-                    {{ mitem.text }}
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+        {{ block('modular_navigation') }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block mobile %}
+    {% if show_onpage_menu %}
+    <div class="mobile-container">
+        <div class="overlay" id="overlay" role="dialog" aria-label="{{ 'THEME_QUARK2LLP.ARIA.MENU'|t|e('html_attr') }}">
+            <div class="mobile-logo">
+                {% include 'partials/logo.html.twig' with {mobile: true} %}
+            </div>
+            <nav class="overlay-menu" aria-label="{{ 'THEME_QUARK2LLP.ARIA.MOBILE_NAV'|t|e('html_attr') }}">
+                {{ block('modular_navigation') }}
+            </nav>
+            <div style="margin-top:2rem;">
+                {% include 'partials/theme-toggle.html.twig' with {labeled: true} %}
+            </div>
+        </div>
+    </div>
     {% else %}
         {{ parent() }}
     {% endif %}

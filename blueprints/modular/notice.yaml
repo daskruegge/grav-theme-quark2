@@ -1,0 +1,22 @@
+title: Current Notice
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        notice:
+          type: tab
+          title: Current Notice
+          fields:
+            header.notice.enabled:
+              type: toggle
+              label: Show as Popup
+              default: 1
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+            header.notice.title:
+              type: text
+              label: Notice Title

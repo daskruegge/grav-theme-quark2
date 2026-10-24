@@ -1,0 +1,15 @@
+<section class="section modular-practice-team">
+    <div class="container">
+        {{ content|raw }}
+        <div class="practice-team-grid">
+            {% for member in page.header.team.members %}
+                {% set portrait = member.image ? page.media[member.image] : null %}
+                <article class="practice-team-member">
+                    {% if portrait %}<img src="{{ portrait.url }}" alt="Portrait of {{ member.name }}" loading="lazy">{% endif %}
+                    <h3>{{ member.name }}</h3>
+                    {% if member.role %}<p>{{ member.role }}</p>{% endif %}
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

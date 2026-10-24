@@ -1,0 +1,21 @@
+title: Parking
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        parking:
+          type: tab
+          title: Parking
+          fields:
+            header.parking.spaces:
+              type: number
+              label: Number of Parking Spaces
+              validate:
+                type: int
+                min: 0
+            header.parking.image:
+              type: filepicker
+              label: Parking Photo
+              preview_images: true

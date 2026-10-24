@@ -1,5 +1,5 @@
 en:
-  THEME_QUARK2:
+  THEME_QUARK2LLP:
     ERROR:
       BACK_HOME: "Back home"
     BLOG:
@@ -40,7 +40,7 @@ en:
       OPEN_POST: "Open post"
 
 es:
-  THEME_QUARK2:
+  THEME_QUARK2LLP:
     ERROR:
       BACK_HOME: "Volver al inicio"
     BLOG:

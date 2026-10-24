@@ -1,0 +1,20 @@
+{% set hours_image = page.header.hours.image ? page.media[page.header.hours.image] : null %}
+{% set image_position = page.header.hours.image_position|default('right') %}
+<section class="section modular-practice-hours">
+    <div class="container">
+        <div class="practice-hours-layout image-{{ image_position }}{% if not hours_image %} no-image{% endif %}">
+            <div class="practice-hours-content">
+                {{ content|raw }}
+                {% if page.header.hours.entries %}
+                <dl class="practice-hours">
+                    {% for row in page.header.hours.entries %}
+                    <div><dt>{{ row.day }}</dt><dd>{{ row.time }}</dd></div>
+                    {% endfor %}
+                </dl>
+                {% endif %}
+                {% if page.header.hours.acute_note %}<p class="practice-acute-note">{{ page.header.hours.acute_note|nl2br }}</p>{% endif %}
+            </div>
+            {% if hours_image %}<figure class="practice-hours-image"><img src="{{ hours_image.url }}" alt="{{ page.header.hours.image_alt|default('')|e('html_attr') }}" loading="lazy"></figure>{% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="section modular-practice-contact">
+    <div class="container">
+        {{ content|raw }}
+        <div class="practice-contact-grid">
+            {% for block in page.header.contact.blocks %}
+                <article class="practice-contact-card">
+                    {% if block.icon %}<span class="practice-contact-icon"><i class="{{ block.icon|fa_icon }}" aria-hidden="true"></i></span>{% endif %}
+                    {% if block.title %}<h3>{{ block.title }}</h3>{% endif %}
+                    {% if block.url %}<a href="{{ block.url }}">{{ block.text|nl2br }}</a>
+                    {% elseif block.text %}<p>{{ block.text|nl2br }}</p>{% endif %}
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

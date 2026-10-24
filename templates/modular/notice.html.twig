@@ -1,0 +1,30 @@
+{% if page.header.notice.enabled %}
+<dialog class="practice-notice-dialog" data-notice-key="{{ page.route|e('html_attr') }}" aria-labelledby="practice-notice-title">
+    <div class="practice-notice-content">
+        <h2 id="practice-notice-title">{{ page.header.notice.title|default('Current information') }}</h2>
+        {{ content|raw }}
+        <form method="dialog">
+            <label><input type="checkbox" name="dont-show-again"> Nicht mehr anzeigen</label>
+            <button type="submit" class="secondary">Schließen</button>
+        </form>
+    </div>
+</dialog>
+<script>
+(function () {
+    var dialog = document.currentScript.previousElementSibling;
+    if (!dialog || !dialog.matches('dialog')) return;
+    var checkbox = dialog.querySelector('input[name="dont-show-again"]');
+    var storageKey = 'quark2llp-notice-seen:' + dialog.dataset.noticeKey;
+    dialog.addEventListener('close', function () {
+        if (checkbox && checkbox.checked) {
+            try { localStorage.setItem(storageKey, '1'); } catch (error) {}
+        }
+    });
+    try {
+        if (!localStorage.getItem(storageKey)) dialog.showModal();
+    } catch (error) {
+        dialog.showModal();
+    }
+})();
+</script>
+{% endif %}

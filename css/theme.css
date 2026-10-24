@@ -1096,6 +1096,257 @@ button.button_container:focus-visible {
   padding: 0.5rem 0 0.5rem 0.75rem;
 }
 
+/* Practice-specific modular layouts */
+.practice-parking-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+.practice-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1.25rem;
+}
+.practice-contact-card {
+  padding: 1.25rem;
+  border: 1px solid var(--q2-divider);
+  border-radius: var(--q2-radius);
+  background: var(--q2-bg-elev);
+}
+.practice-contact-card h3 {
+  margin: 0.75rem 0 0.35rem;
+}
+.practice-contact-card p {
+  margin: 0;
+}
+.practice-contact-icon {
+  display: inline-grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--q2-text-strong);
+  background: var(--q2-bg-muted);
+}
+.practice-hours-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "content image";
+  gap: 2rem;
+  align-items: start;
+}
+.practice-hours-content {
+  grid-area: content;
+}
+.practice-hours-image {
+  grid-area: image;
+  margin: 0;
+  align-self: center;
+}
+.practice-hours-image img {
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  border-radius: var(--q2-radius);
+}
+.practice-hours-layout.image-left {
+  grid-template-areas: "image content";
+}
+.practice-hours-layout.no-image {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "content";
+}
+.practice-hours {
+  margin: 0;
+}
+.practice-hours > div,
+.practice-emergency-list li {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--q2-divider);
+}
+.practice-hours dt,
+.practice-hours dd {
+  margin: 0;
+}
+.practice-acute-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 3px solid var(--q2-accent);
+  background: var(--q2-bg-muted);
+}
+.practice-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1.5rem 2rem;
+}
+.practice-service {
+  padding-top: 1rem;
+  border-top: 1px solid var(--q2-border-strong);
+}
+.practice-service h3 {
+  margin-bottom: 0.75rem;
+}
+.practice-service ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.practice-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1.5rem;
+}
+.practice-gallery-item {
+  min-width: 0;
+  margin: 0;
+}
+.practice-gallery-item > a {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--q2-radius);
+}
+.practice-gallery-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+.practice-gallery-item > a:hover img {
+  transform: scale(1.03);
+}
+.practice-gallery-item figcaption {
+  padding-top: 0.65rem;
+}
+.practice-gallery-item figcaption p:last-child {
+  margin-bottom: 0;
+}
+.practice-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.practice-team-member img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--q2-radius);
+  background: var(--q2-bg-muted);
+}
+.practice-team-member h3 {
+  margin: 0.75rem 0 0.25rem;
+}
+.practice-team-member p {
+  color: var(--q2-text-muted);
+}
+.practice-parking-layout img {
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  border-radius: var(--q2-radius);
+}
+.practice-emergency-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.practice-emergency-list li {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.practice-notice-dialog {
+  width: fit-content;
+  height: fit-content;
+  max-width: 60vw;
+  max-height: 70vh;
+  min-width: fit-content;
+  min-height: fit-content;
+  padding: 0;
+  border: 1px solid var(--q2-border-strong);
+  border-radius: var(--q2-radius);
+  color: var(--q2-text);
+  background: var(--q2-bg-elev);
+  box-shadow: var(--q2-shadow-raised);
+}
+.practice-notice-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(2px);
+}
+.practice-notice-content {
+  overflow-y: auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+.practice-notice-content form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1.5rem 0 0;
+}
+.practice-notice-content form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+.practice-notice-content form input[type="checkbox"] {
+  margin: 0;
+}
+.footer-brand {
+  margin-bottom: 0.75rem;
+}
+.footer-brand .navbar-brand {
+  display: inline-flex;
+}
+.footer-brand .navbar-brand img,
+.footer-brand .navbar-brand svg {
+  width: auto;
+  max-width: 10rem;
+  max-height: 3rem;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.footer-credit {
+  margin-bottom: 0;
+}
+
+@media (max-width: 960px) {
+  .practice-team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .practice-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .practice-parking-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .practice-hours > div {
+    grid-template-columns: minmax(5.5rem, 0.75fr) minmax(0, 1.25fr);
+    gap: 0.5rem;
+  }
+  .practice-hours-layout,
+  .practice-hours-layout.image-left {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "content" "image";
+    gap: 1.5rem;
+  }
+  .practice-emergency-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+}
+
 @media (max-width: 860px) {
   .desktop-menu {
     display: none;
@@ -1264,6 +1515,10 @@ body.overlay-open {
   color: var(--q2-text-muted);
   max-width: 48ch;
   margin-inline: auto;
+}
+
+.hero img.logo {
+  width: 65%;
 }
 
 #to-start {

@@ -11,11 +11,18 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'quark2-theme';
+  var STORAGE_KEY = 'quark2llp-theme';
+  var LEGACY_STORAGE_KEY = 'quark2-theme';
   var root = document.documentElement;
 
   function getStored() {
-    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return stored;
+      stored = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (stored) localStorage.setItem(STORAGE_KEY, stored);
+      return stored;
+    } catch (e) { return null; }
   }
   function setStored(value) {
     try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
@@ -46,7 +53,7 @@
 
   // English defaults only. The real strings come from the button's data-*
   // attributes, which theme-toggle.html.twig fills from languages.yaml, so a
-  // translated site (or a child theme overriding THEME_QUARK2.THEME_TOGGLE.*)
+  // translated site (or a child theme overriding THEME_QUARK2LLP.THEME_TOGGLE.*)
   // gets translated labels. These stand in for a custom template that renders
   // the button without them.
   var FALLBACK_LABELS = { auto: 'Auto', light: 'Light', dark: 'Dark' };

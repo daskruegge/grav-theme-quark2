@@ -1,0 +1,25 @@
+title: Services
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        services:
+          type: tab
+          title: Services
+          fields:
+            header.services.groups:
+              name: groups
+              type: list
+              label: Service Groups
+              style: vertical
+              fields:
+                .title:
+                  type: text
+                  label: Heading
+                .items:
+                  type: textarea
+                  label: Services
+                  help: Enter one service per line.
+                  rows: 6

@@ -1,0 +1,23 @@
+title: Emergency Numbers
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        emergency:
+          type: tab
+          title: Emergency Numbers
+          fields:
+            header.emergency.contacts:
+              name: contacts
+              type: list
+              label: Emergency Contacts
+              style: vertical
+              fields:
+                .name:
+                  type: text
+                  label: Service
+                .phone:
+                  type: text
+                  label: Phone

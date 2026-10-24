@@ -1,0 +1,13 @@
+<section class="section modular-practice-emergency">
+    <div class="container">
+        {{ content|raw }}
+        <ul class="practice-emergency-list">
+            {% for contact in page.header.emergency.contacts %}
+                <li>
+                    <strong>{{ contact.name }}</strong>
+                    <a href="tel:{{ contact.phone|replace({' ': '', '/': '', '-': '', '(': '', ')': ''}) }}">{{ contact.phone }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

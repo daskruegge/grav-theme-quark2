@@ -1,0 +1,17 @@
+<section class="section modular-practice-services">
+    <div class="container">
+        {{ content|raw }}
+        <div class="practice-service-grid">
+            {% for group in page.header.services.groups %}
+                <article class="practice-service">
+                    <h3>{{ group.title }}</h3>
+                    <ul>
+                        {% for item in group.items|default('')|replace({'\r\n': '\n', '\r': '\n'})|split('\n') %}
+                            {% if item|trim %}<li>{{ item|trim }}</li>{% endif %}
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

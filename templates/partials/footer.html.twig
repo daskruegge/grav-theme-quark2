@@ -1,10 +1,22 @@
 <footer id="footer" class="section section-tight">
     <div class="container">
-        <p>
+        <div class="footer-brand">
+            {% include 'partials/logo.html.twig' %}
+        </div>
+        {% if theme_var('footer-links') %}
+        <nav class="footer-links" aria-label="Footer">
+            {% for link in theme_var('footer-links') %}
+                <a href="{{ link.url }}">{{ link.text }}</a>
+            {% endfor %}
+        </nav>
+        {% endif %}
+        <!--
+        <p class="footer-credit">
             <a href="https://getgrav.org">Grav</a>
             was <i class="fa-solid fa-code" aria-hidden="true"></i>
             with <i class="fa-solid fa-heart pulse" aria-hidden="true"></i>
             by <a href="https://trilby.media">Trilby Media</a>.
         </p>
+        -->
     </div>
 </footer>

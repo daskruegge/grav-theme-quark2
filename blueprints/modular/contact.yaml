@@ -1,0 +1,31 @@
+title: Contact
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        contact:
+          type: tab
+          title: Contact
+          fields:
+            header.contact.blocks:
+              name: blocks
+              type: list
+              label: Contact Blocks
+              style: vertical
+              fields:
+                .icon:
+                  type: iconpicker
+                  label: Icon
+                .title:
+                  type: text
+                  label: Heading
+                .text:
+                  type: textarea
+                  label: Details
+                  rows: 3
+                .url:
+                  type: text
+                  label: Link URL
+                  help: Optional; for example tel:, mailto:, or a map link.

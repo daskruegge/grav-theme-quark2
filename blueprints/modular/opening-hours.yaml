@@ -1,0 +1,40 @@
+title: Opening Hours
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hours:
+          type: tab
+          title: Opening Hours
+          fields:
+            header.hours.entries:
+              name: entries
+              type: list
+              label: Opening Hours
+              fields:
+                .day:
+                  type: text
+                  label: Day
+                .time:
+                  type: text
+                  label: Hours
+            header.hours.acute_note:
+              type: textarea
+              label: Acute Care Notice
+              rows: 3
+            header.hours.image:
+              type: filepicker
+              label: Image
+              preview_images: true
+            header.hours.image_alt:
+              type: text
+              label: Image Alt Text
+            header.hours.image_position:
+              type: select
+              label: Image Position
+              default: right
+              options:
+                left: Left
+                right: Right

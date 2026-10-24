@@ -1,6 +1,6 @@
-# Quark 2 Theme
+# quark2llp Theme
 
-**Quark 2** is the new default theme for [Grav CMS](https://github.com/getgrav/grav) 2.0. It's a ground-up modernization of the venerable Quark theme that shipped with Grav 1.5 – 1.8, rebuilt on [Blades CSS](https://github.com/anyblades/blades) (the actively maintained successor to Pico CSS), [Font Awesome 7](https://fontawesome.com), and a Cal.com-inspired design system. Quark 2 requires Grav 1.7+ and is the recommended foundation for building your own themes on Grav 2.0.
+**quark2llp** is a Grav 2.1+ theme based on the modernized Quark 2 theme, using [Blades CSS](https://github.com/anyblades/blades), [Font Awesome 7](https://fontawesome.com), and a Cal.com-inspired design system.
 
 ## Features
 
@@ -29,33 +29,36 @@
   * Features Modular view template `features.md`
   * Hero Modular view template `hero.md`
   * Text Modular view template `text.md`
-  * Note: Gallery Modular view template `gallery.md` only works in concert with premium plugin [Lightbox Gallery](https://getgrav.org/premium/lightbox-gallery/docs)
+  * Gallery Modular view template `gallery.md` renders its image grid without additional plugins; images link to their full-size files.
+  * Practice modules: Contact and Opening Hours, Services, Practice Team, Parking, Emergency Numbers, and Current Notice
+
+Practice modules are available for single-page modular sites. Add each section as a modular child page using the matching blueprint, then set its menu label and upload any portraits or photos to that page. The Current Notice opens as a dialog, can be dismissed for the current browser session, and remains available from its page button. Add Impressum and Datenschutz destinations in the theme's **Footer Links** option; a custom theme logo is shown in both the header and footer.
 
 # Installation
 
-Installing the Quark 2 theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
+Install quark2llp by placing its folder in your Grav site's `user/themes` directory. Name the folder `quark2llp` so Grav resolves the theme slug and class correctly.
 
-The theme by itself is useful, but you may have an easier time getting up and running by installing a Grav 2.0 skeleton — several are being updated to ship with Quark 2.
+The theme is designed for Grav 2.1+.
 
 ## GPM Installation (Preferred)
 
-The simplest way to install this theme is via the [Grav Package Manager (GPM)](https://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line). From the root of your Grav install type:
+If quark2llp is published to GPM, install it from the Grav root with:
 
-    bin/gpm install quark2
+    bin/gpm install quark2llp
 
-This will install the Quark 2 theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/quark2`.
+This installs the theme under `/user/themes/quark2llp`.
 
 ## Manual Installation
 
-To install this theme, just download the zip version of this repository and unzip it under `/your/site/grav/user/themes`. Then, rename the folder to `quark2`. You can find these files either on [GitHub](https://github.com/getgrav/grav-theme-quark2) or via [GetGrav.org](https://getgrav.org/downloads/themes).
+For a manual installation, place the theme folder under `/your/site/grav/user/themes` and name it `quark2llp`.
 
 You should now have all the theme files under
 
-    /your/site/grav/user/themes/quark2
+    /your/site/grav/user/themes/quark2llp
 
 ## Default Options
 
-Quark 2 comes with a few default options that can be set site-wide. These options are:
+quark2llp comes with a few default options that can be set site-wide. These options are:
 
 ```yaml
 enabled: true                 # Enable the theme
@@ -73,14 +76,14 @@ fontawesome:
   local: false                # true = expect css/fontawesome/all.min.css in the theme; false = load from CDN
 ```
 
-To make modifications, you can copy the `user/themes/quark2/quark2.yaml` file to `user/config/themes/` folder and modify, or you can use the admin plugin.
+To make modifications, copy `user/themes/quark2llp/quark2llp.yaml` to `user/config/themes/quark2llp.yaml`, or use the Admin plugin.
 
 > [!IMPORTANT]
-> Do not modify the `user/themes/quark2/quark2.yaml` file directly or your changes will be lost with any updates.
+> Do not modify the theme's `quark2llp.yaml` file directly or your changes will be lost with any updates.
 
 ## Appearance (Light / Dark / Auto)
 
-Quark 2 ships with a three-state appearance toggle in the header. The user's choice is stored in `localStorage` under `quark2-theme` and re-applied on subsequent visits. When the mode is **Auto**, the theme follows the operating system's `prefers-color-scheme` preference and reacts live to OS-level changes.
+quark2llp ships with a three-state appearance toggle in the header. The user's choice is stored in `localStorage` under `quark2llp-theme`; existing `quark2-theme` preferences are migrated automatically. When the mode is **Auto**, the theme follows the operating system's `prefers-color-scheme` preference and reacts live to OS-level changes.
 
 The default state for first-time visitors is controlled by the `theme-mode` option above.
 
@@ -98,7 +101,7 @@ Dark mode lightens the accent slightly to keep it readable on the dark canvas. L
 
 ## Custom Logos
 
-To add a custom logo, put the logo file into the `user/themes/quark2/images/logo` folder. Standard image formats are supported (`.png`, `.jpg`, `.gif`, `.svg`, etc.). Then reference the logo via the YAML like so:
+To add a custom logo, put the logo file into `user/themes/quark2llp/images/logo`. Standard image formats are supported (`.png`, `.jpg`, `.gif`, `.svg`, etc.). Then reference the logo via the YAML like so:
 
 ```yaml
 custom_logo:
@@ -107,15 +110,15 @@ custom_logo_mobile:
     - name: 'my-mobile-logo.png'
 ```
 
-Alternatively, you can use the drag-n-drop **Custom Logo** field in the Quark 2 theme options.
+Alternatively, use the drag-n-drop **Custom Logo** field in quark2llp theme options.
 
 SVG logos are inlined and inherit `currentColor`, so they automatically adapt to light/dark mode when you set `fill="currentColor"` on their paths.
 
-Your logo lives inside the theme folder, and it is left alone when you update Quark 2. If you keep your whole Grav site in git and you installed Quark 2 before v1.1.10, delete the leftover `user/themes/quark2/.gitignore` file once. Older versions shipped a rule that kept `images/logo/` out of your repository.
+Your logo lives inside the theme folder and is left alone when you update quark2llp.
 
 ## Page Overrides
 
-Quark 2 has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page. The theme will merge the combination of the defaults with any `body_classes` set. For example:
+Pages can override some default options by setting `body_classes`; the theme merges these with the defaults. For example:
 
 ```yaml
 body_classes: "header-transparent"
@@ -230,7 +233,7 @@ To move to a newer Blades release:
 
 ## Disqus / JSComments dark-mode workaround
 
-Quark 2's accent tints use the modern CSS `color-mix(in oklab, …)` function. Browsers serialize the computed result as `oklab(…)` (or `color(srgb …)` for `in srgb`). Disqus's embed.js ships an older color parser that does not understand either form, and it throws an exception sampling computed styles, which prevents the comments thread from initializing on first paint in dark mode. (Light mode works because the un-mixed accent stays as plain hex.)
+quark2llp's accent tints use the modern CSS `color-mix(in oklab, …)` function. Browsers serialize the computed result as `oklab(…)` (or `color(srgb …)` for `in srgb`). Disqus's embed.js ships an older color parser that does not understand either form, and it throws an exception sampling computed styles, which prevents the comments thread from initializing on first paint in dark mode. (Light mode works because the un-mixed accent stays as plain hex.)
 
 This is a Disqus-specific issue and the rest of the theme has no reason to compromise on `color-mix`, so the fix is opt-in. If you embed Disqus (typically via the [JSComments plugin](https://github.com/getgrav/grav-plugin-jscomments)) and want dark mode to work, copy `partials/base.html.twig` into your child theme (or override it inline) and add the following block just after the existing `:root[data-theme='dark']` style block:
 
@@ -246,7 +249,7 @@ This is a Disqus-specific issue and the rest of the theme has no reason to compr
 {% endif %}
 ```
 
-The `q2_mix_white(hex, pct)` and `q2_mix_alpha(hex, pct)` Twig functions are shipped by the theme (registered in `quark2.php`) and return pre-resolved `rgb(…)` / `rgba(…)` strings. Scoping the override to `#disqus_thread` keeps the rest of the page on full `oklab` mixing, and only the Disqus widget sees the pre-resolved values that its parser understands.
+The `q2_mix_white(hex, pct)` and `q2_mix_alpha(hex, pct)` Twig functions are shipped by the theme (registered in `quark2llp.php`) and return pre-resolved `rgb(…)` / `rgba(…)` strings. Scoping the override to `#disqus_thread` keeps the rest of the page on full `oklab` mixing, and only the Disqus widget sees the pre-resolved values that its parser understands.
 
 ## License
 

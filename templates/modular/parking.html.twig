@@ -1,0 +1,12 @@
+{% set parking_image = page.header.parking.image ? page.media[page.header.parking.image] : null %}
+<section class="section modular-practice-parking">
+    <div class="container">
+        <div class="practice-parking-layout">
+            <div>
+                {{ content|raw }}
+                {% if page.header.parking.spaces is not null %}<p class="practice-parking-count"><strong>{{ page.header.parking.spaces }} practice parking spaces</strong></p>{% endif %}
+            </div>
+            {% if parking_image %}<img src="{{ parking_image.url }}" alt="Parking at the practice" loading="lazy">{% endif %}
+        </div>
+    </div>
+</section>

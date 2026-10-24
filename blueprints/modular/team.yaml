@@ -1,0 +1,27 @@
+title: Practice Team
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        team:
+          type: tab
+          title: Practice Team
+          fields:
+            header.team.members:
+              name: members
+              type: list
+              label: Team Members
+              style: vertical
+              fields:
+                .name:
+                  type: text
+                  label: Name
+                .role:
+                  type: text
+                  label: Role
+                .image:
+                  type: filepicker
+                  label: Portrait
+                  preview_images: true

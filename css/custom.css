@@ -4,3 +4,12 @@
  * This file is safe to edit. It is loaded last so anything here overrides
  * theme.css without having to mark rules !important.
  */
+
+.content-text-light, 
+.content-text-light p, 
+.content-text-light h1, 
+.content-text-light h2, 
+.content-text-light h3, 
+.content-text-light a {
+    color: #a8a8a8 !important;
+}
